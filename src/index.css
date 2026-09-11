@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-bg: 250 250 250;
+    --color-surface: 255 255 255;
+    --color-text: 23 23 23;
+    --color-muted: 115 115 115;
+    --color-border: 229 229 229;
+  }
+
+  .dark {
+    --color-bg: 10 10 12;
+    --color-surface: 24 24 27;
+    --color-text: 250 250 250;
+    --color-muted: 161 161 170;
+    --color-border: 39 39 42;
+  }
+
+  body {
+    background-color: rgb(var(--color-bg));
+    color: rgb(var(--color-text));
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+}
+
+@layer utilities {
+  .bg-app { background-color: rgb(var(--color-bg)); }
+  .bg-surface { background-color: rgb(var(--color-surface)); }
+  .text-app { color: rgb(var(--color-text)); }
+  .text-muted { color: rgb(var(--color-muted)); }
+  .border-app { border-color: rgb(var(--color-border)); }
+
+  .no-select {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar { width: 6px; height: 6px; }
+  .scrollbar-thin::-webkit-scrollbar-track { background: transparent; }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: rgb(var(--color-border));
+    border-radius: 3px;
+  }
+}
+
+@keyframes watermark-drift {
+  0%   { transform: translate(-30%, -30%); }
+  25%  { transform: translate(30%, -20%); }
+  50%  { transform: translate(20%, 30%); }
+  75%  { transform: translate(-20%, 20%); }
+  100% { transform: translate(-30%, -30%); }
+}
+
+.watermark-animate {
+  animation: watermark-drift 12s ease-in-out infinite;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.4s ease-out;
+}
+
+@keyframes slide-in-right {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0); }
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.3s ease-out;
+}
